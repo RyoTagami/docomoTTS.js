@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>docomoTTS.js example</title>
+    </head>
+    <body>
+        <h1>docomoTTS.js example</h1>
+        <p>
+            API Key
+            <input id="key">
+        </p>
+        <p>
+            SSML
+            <textarea id="ssml" rows="10"></textarea>
+        </p>
+        <button onclick="run();">Play</button>
+
+        <script src="../docomoTTS.js"></script>
+        <script>
+            document.getElementById('ssml').innerHTML = '<?xml version="1.0" encoding="utf-8" ?><speak version="1.1"><voice name="sumire"><prosody rate="1.0" pitch="1.0">こんにちは。これからよろしくおねがいします。</prosody></voice></speak>';
+
+            function run() {
+                var tts = new TTS_AI(document.getElementById('key').value);
+                var voice = tts.download(document.getElementById('ssml').value, tts.play);
+            }
+        
+        </script>
+    </body>
+
+</html>
